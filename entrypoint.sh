@@ -13,7 +13,7 @@ list_repositories() {
 
 # Function to filter repositories based on include and exclude patterns
 filter_repositories() {
-    local repositories="$1"unset x
+    local repositories="$1"
     local include="$2"
     local exclude="$3"
 
