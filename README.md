@@ -44,7 +44,7 @@ your container registry by specifying which repositories and tags to include or 
     # Extended Regular Expression (ERE) pattern of tags to exclude. 
     # Tags matching this pattern will not be deleted, 
     # for example, '^(tag4|tag5|tag6)$'.
-    # Default: null
+    # Default: '^latest$'
     tags_to_exclude: ''
 
     # Whether to run garbage collection after deleting tags. 
