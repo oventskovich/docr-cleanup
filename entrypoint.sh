@@ -82,7 +82,7 @@ main() {
     local tags_to_skip_size="${3:-10}"
     local tags_to_include="${4:-}"
     local tags_to_exclude="${5:-}"
-    local perform_gc="${6:-false}"
+    local perform_gc="${6:-true}"
 
     # Check if tags_to_skip_size is zero or a positive integer
     if ! is_zero_or_positive_integer "$tags_to_skip_size"; then
