@@ -1,0 +1,39 @@
+name: 'DigitalOcean Container Registry Cleanup'
+description: 'A GitHub Action to delete image tags in DigitalOcean Container Registry and run Garbage Collection based on provided inputs.'
+author: "Aleh Ventskovich, oleg1995petrov@gmail.com"
+branding:
+  color: 'red'
+  icon: 'trash'
+
+inputs:
+  reps_to_include:
+    description: 'Extended Regular Expression (ERE) regex pattern of repositories to include (e.g., ^(repo1|repo2|repo3)$).'
+    required: false
+    default: ''
+  reps_to_exclude:
+    description: 'Extended Regular Expression (ERE) regex pattern of repositories to include (e.g., ^(repo4|repo5|repo6)$).'
+    required: false
+    default: ''
+  tags_to_skip_size:
+    description: 'Number of most recent tags to skip.'
+    required: false
+    default: '0'
+  tags_to_include:
+    description: 'Extended Regular Expression (ERE) regex pattern of tags to include (e.g., ^(tag1|tag2|tag3)$).'
+    required: false
+    default: ''
+  tags_to_exclude:
+    description: 'Extended Regular Expression (ERE) regex pattern of tags to exclude (e.g., ^(tag4|tag5|tag6)$).'
+    required: false
+    default: ''
+  perform_gc:
+    description: 'Run garbage collection (true/false).'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Run DigitalOcean Container Registry Cleanup'
+      shell: bash
+      run: ${{ github.action_path }}/entrypoint.sh "${{ inputs.reps_to_include }}" "${{ inputs.reps_to_exclude }}" "${{ inputs.tags_to_skip_size }}" "${{ inputs.tags_to_include }}" "${{ inputs.tags_to_exclude }}" "${{ inputs.perform_gc }}"
