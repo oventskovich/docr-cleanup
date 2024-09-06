@@ -55,6 +55,7 @@ delete_tags() {
     local tags="$2"
 
     if [[ -n "$tags" ]]; then
+        tags=$(echo "$tags" | tr '\n' ' ')
         doctl registry repository delete-tag "$repository" $tags --force
         echo "Deleted tags from $repository: $tags"
     else
@@ -96,7 +97,6 @@ main() {
     # Process each repository
     for repository in $repositories; do
         tags=$(filter_tags "$repository" "$tags_to_skip_size" "$tags_to_include" "$tags_to_exclude")
-        tags=$(echo "$tags" | tr '\n' ' ')
         delete_tags "$repository" "$tags"
     done
 
