@@ -25,7 +25,7 @@ inputs:
   tags_to_exclude:
     description: 'Extended Regular Expression (ERE) regex pattern of tags to exclude (e.g., ^(tag4|tag5|tag6)$).'
     required: false
-    default: ''
+    default: '^latest$'
   perform_gc:
     description: 'Run garbage collection (true/false).'
     required: false
