@@ -17,7 +17,7 @@ inputs:
   tags_to_skip_size:
     description: 'Number of most recent tags to skip.'
     required: false
-    default: '0'
+    default: '10'
   tags_to_include:
     description: 'Extended Regular Expression (ERE) regex pattern of tags to include (e.g., ^(tag1|tag2|tag3)$).'
     required: false
